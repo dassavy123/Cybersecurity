@@ -143,3 +143,7 @@ Identify potential security risks from open ports ->>>>>>>>>>>>>
 123 (NTP) — amplification DDoS (if misconfigured).
 
 161/162 (SNMP) — default community strings leak device configs
+
+
+
+    
