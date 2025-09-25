@@ -1,0 +1,40 @@
+Local IP - 192.168.60.226/24
+
+
+Vulnerability: Ruby Rack library < 2.2.14, < 3.0.16, or < 3.1.14 is affected.
+
+Impact: An attacker can send crafted HTTP requests that exhaust memory or CPU, stalling or crashing the Rack server (denial of service).
+
+Your host: Nessus shows Rack 2.2.11 is installed at
+
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.3.0/gems/rack-2.2.11
+
+
+fix: Upgrade to Rack ≥ 2.2.14, ≥ 3.0.16, or ≥ 3.1.14.
+
+Update Rack gem
+
+# update Rack to safe version
+gem install rack -v 2.2.14
+
+# or for latest in 2.x branch
+gem install rack --version "~> 2.2.14"
+
+# verify version
+gem list rack
+
+
+For Metasploit (your screenshot path shows Rack inside Metasploit’s vendor bundle)
+
+Metasploit bundles its own gems. To fix:
+
+cd /usr/share/metasploit-framework
+bundle update rack
+
+Temporary mitigations (if you cannot patch immediately)
+
+Restrict external access to apps using Rack (firewall rules, reverse proxy).
+
+Put the app behind a WAF (modsecurity, nginx with rate-limiting).
+
+Monitor CPU/memory spikes for Rack processes.
